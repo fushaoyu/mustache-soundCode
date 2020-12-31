@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Hello World</div>
+    <script src="/xuni/bundle.js"></script>
+    <script>
+        var domStr = `
+                <ul>
+                    {{#arr}}
+                    <li>
+                        <p>姓名: {{name}}  </p>
+                        <p>年龄: {{age}}  </p>
+                        <p>性别: {{sex}}  </p>
+                        {{#hobby}}
+                        <ol>
+                            <div>爱好</div>
+                            <li>{{.}}</li>    
+                        </ol>
+                        {{/hobby}}
+                    </li>
+                    {{/arr}}
+                </ul>
+        `
+        var data = {
+            arr: [
+                { name: '小米', age: "14", sex: "男", hobby: ["车", "飞机", "打炮"] },
+                { name: '小红', age: "16", sex: "女", hobby: ["洋娃娃", "化妆品"] },
+                { name: '笨笨', age: "18", sex: "男", hobby: ["挖掘机"] },
+            ]
+        };
+        var dom = SetTemplate.rander(domStr, data);
+        document.body.innerHTML = dom
+    </script>
+</body>
+
+</html>
